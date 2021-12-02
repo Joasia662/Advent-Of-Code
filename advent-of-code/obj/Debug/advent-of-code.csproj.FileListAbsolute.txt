@@ -1,0 +1,10 @@
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\bin\Debug\advent-of-code.exe.config
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\bin\Debug\advent-of-code.exe
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\bin\Debug\advent-of-code.pdb
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\obj\Debug\advent-of-code.csprojAssemblyReference.cache
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\obj\Debug\advent_of_code.Form1.resources
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\obj\Debug\advent_of_code.Properties.Resources.resources
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\obj\Debug\advent-of-code.csproj.GenerateResource.cache
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\obj\Debug\advent-of-code.csproj.CoreCompileInputs.cache
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\obj\Debug\advent-of-code.exe
+C:\Users\asiac\Desktop\advent calendar\advent-of-code\advent-of-code\obj\Debug\advent-of-code.pdb
