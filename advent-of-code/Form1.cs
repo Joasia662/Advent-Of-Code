@@ -25,10 +25,44 @@ namespace advent_of_code
             if (fileContent!=null) {
                 string[] valuesTable = fileContent.Split('\n');
 
-                //int solution = this.firstPart(valuesTable);
-                int solution = this.secondPart(valuesTable);
-                this.txtResultBox.Text = solution.ToString();
+                int solution1 = this.firstPart(valuesTable);
+                int solution2 = this.secondPart(valuesTable);
+                this.txtResultPart1.Text = solution1.ToString();
+                this.txtResultPart2.Text = solution2.ToString();
             }
+        }
+
+        private void btnSecondTask_Click(object sender, EventArgs e)
+        {
+            var fileContent = this.openInputFile();
+            if (fileContent != null)
+            {
+                string[] valuesTable = fileContent.Split('\n');
+                int solution1 = this.getSubmarinePosition(valuesTable, "part1");
+                int solution2 = this.getSubmarinePosition(valuesTable, "part2");
+
+                this.txtResultPart1.Text = solution1.ToString();
+                this.txtResultPart2.Text = solution2.ToString();
+            }
+        }
+
+
+        private void btnThirdTask_Click(object sender, EventArgs e)
+        {
+            var fileContent = this.openInputFile();
+            if (fileContent != null)
+            {
+                string[] valuesTable = fileContent.Split('\n');
+                int solution1 = this.getPowerConsumption(valuesTable);
+                this.txtResultPart1.Text = solution1.ToString();
+
+                this.txtResultPart2.Text = " ";
+            }
+        }
+
+        private void btnFourthTask_Click(object sender, EventArgs e)
+        {
+
         }
 
         private int firstPart(string[] valuesTable)
@@ -101,28 +135,8 @@ namespace advent_of_code
             }
             return null;
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void txtResultBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSecondTask_Click(object sender, EventArgs e)
-        {
-            var fileContent = this.openInputFile();
-            if (fileContent != null)
-            {
-                string[] valuesTable = fileContent.Split('\n');
-                int solution = this.getSubmarinePosition(valuesTable);
-                this.txtResultBox.Text = solution.ToString();
-            }
-
-        }
-        private int getSubmarinePosition(string[] valuesTable) {
+        private int getSubmarinePosition(string[] valuesTable, string variant) {
 
             int horizontal=0;
             int depth = 0;
@@ -133,42 +147,32 @@ namespace advent_of_code
 
                     string direction = fullValue[0];
                     int shiftValue = Int32.Parse(fullValue[1]);
-                    calculateNewPositon(ref horizontal, ref depth, ref aim, direction, shiftValue);
+                    calculateNewPositon(ref horizontal, ref depth, ref aim, direction, shiftValue, variant);
                 }
             }
             return horizontal* depth;
         }
 
-        private void calculateNewPositon(ref int horizontal,ref int depth, ref int aim,  string changedPositionDirection, int changedShiftValue) 
+        private void calculateNewPositon(ref int horizontal,ref int depth, ref int aim,  string changedPositionDirection, int changedShiftValue,string variant) 
         { 
             switch (changedPositionDirection)
             {
                 case "forward":
                     horizontal += changedShiftValue;
-                    depth += aim * changedShiftValue;
+                    if(variant=="part2")depth += aim * changedShiftValue;
                     break;
                 case "down":
-                  //  depth += changedShiftValue;
-                    aim += changedShiftValue;
+                    
+                    if (variant == "part2") aim += changedShiftValue;
+                    else depth += changedShiftValue;
                     break;
                 case "up":
-                  //  depth -= changedShiftValue;
-                    aim -= changedShiftValue;
+                    if (variant == "part2") aim -= changedShiftValue;
+                    else depth -= changedShiftValue;
                     break;
                 default:
                     Console.WriteLine("The direction is not recognizable");
                     break;
-            }
-        }
-
-        private void btnThirdTask_Click(object sender, EventArgs e)
-        {
-            var fileContent = this.openInputFile();
-            if (fileContent != null)
-            {
-                string[] valuesTable = fileContent.Split('\n');
-                int solution = this.getPowerConsumption(valuesTable);
-                this.txtResultBox.Text = solution.ToString();
             }
         }
 
