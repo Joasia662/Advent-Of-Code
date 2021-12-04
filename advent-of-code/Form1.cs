@@ -121,36 +121,38 @@ namespace advent_of_code
             }
 
         }
-
         private int getSubmarinePosition(string[] valuesTable) {
 
             int horizontal=0;
             int depth = 0;
-
+            int aim = 0;
             for (int index = 0; index < valuesTable.Length; index ++) {
                 if (!String.IsNullOrEmpty(valuesTable[index])) {
                     string[] fullValue = valuesTable[index].Split(' ');
 
                     string direction = fullValue[0];
                     int shiftValue = Int32.Parse(fullValue[1]);
-                    calculateNewPositon(ref horizontal, ref depth, direction, shiftValue);
+                    calculateNewPositon(ref horizontal, ref depth, ref aim, direction, shiftValue);
                 }
             }
             return horizontal* depth;
         }
 
-        private void calculateNewPositon(ref int horizontal,ref int depth, string changedPositionDirection, int changedShiftValue) 
+        private void calculateNewPositon(ref int horizontal,ref int depth, ref int aim,  string changedPositionDirection, int changedShiftValue) 
         { 
             switch (changedPositionDirection)
             {
                 case "forward":
                     horizontal += changedShiftValue;
+                    depth += aim * changedShiftValue;
                     break;
                 case "down":
-                    depth += changedShiftValue;
+                  //  depth += changedShiftValue;
+                    aim += changedShiftValue;
                     break;
                 case "up":
-                    depth -= changedShiftValue;
+                  //  depth -= changedShiftValue;
+                    aim -= changedShiftValue;
                     break;
                 default:
                     Console.WriteLine("The direction is not recognizable");
