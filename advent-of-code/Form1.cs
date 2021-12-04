@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -157,6 +158,65 @@ namespace advent_of_code
                 default:
                     Console.WriteLine("The direction is not recognizable");
                     break;
+            }
+        }
+
+        private void btnThirdTask_Click(object sender, EventArgs e)
+        {
+            var fileContent = this.openInputFile();
+            if (fileContent != null)
+            {
+                string[] valuesTable = fileContent.Split('\n');
+                int solution = this.getPowerConsumption(valuesTable);
+                this.txtResultBox.Text = solution.ToString();
+            }
+        }
+
+        private int getPowerConsumption(string[] valuesTable)
+        {
+            int gammaRate;
+            int epsilonRate;
+
+            int[] gamma = new int[valuesTable[0].Length];
+            int[] epsilon = new int[valuesTable[0].Length];
+            int[] columnValueCounter = this.countValueInTableColumns(valuesTable);
+
+            this.fillGammaElipsonValue(ref gamma, ref epsilon, columnValueCounter, valuesTable.Length);
+            gammaRate= Convert.ToInt32(string.Join("", gamma), 2);
+            epsilonRate = Convert.ToInt32(string.Join("", epsilon), 2);
+
+            return epsilonRate* gammaRate;
+        }
+
+        private int[] countValueInTableColumns(string[] valuesTable) 
+        {
+            int[] counter = new int[valuesTable[0].Length];
+            for (int elementIndex = 0; elementIndex < valuesTable.Length; elementIndex++)
+            {
+                for (int charIndex = 0; charIndex < valuesTable[elementIndex].Length; charIndex++)
+                {
+                    string tmpChar = valuesTable[elementIndex][charIndex].ToString();
+                    counter[charIndex] += Int32.Parse(tmpChar);
+                }
+
+            }
+            return counter;
+        }
+
+        private void fillGammaElipsonValue(ref int[] gamma, ref int[] epsilon, int[] columnValueCounter, int maxValue)
+        {
+            for (int index = 0; index < columnValueCounter.Length; index++)
+            {
+                if (columnValueCounter[index] > maxValue / 2)
+                {
+                    gamma[index] = 1;
+                    epsilon[index] = 0;
+                }
+                else
+                {
+                    gamma[index] = 0;
+                    epsilon[index] = 1;
+                }
             }
         }
     }
