@@ -13,8 +13,6 @@ namespace advent_of_code
 {
     public partial class Form1 : Form
     {
-        // public const string InputDataPath = "./inputs";
-
         public Form1()
         {
             InitializeComponent();
@@ -22,36 +20,13 @@ namespace advent_of_code
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                //open and design task requrements
-                var fileContent = string.Empty;
-                var filePath = string.Empty;
+            var fileContent = this.openInputFile();
+            if (fileContent!=null) {
+                string[] valuesTable = fileContent.Split('\n');
 
-                openFileDialog.InitialDirectory = this.getInputFolder();
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-
-                    filePath = openFileDialog.FileName;
-                    var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        fileContent = reader.ReadToEnd();
-                        string[] valuesTable = fileContent.Split('\n');
-
-                        //int solution = this.firstPart(valuesTable);
-                        int solution = this.secondPart(valuesTable);
-
-                        this.txtResultBox.Text = solution.ToString();
-
-
-                    }
-                }
+                //int solution = this.firstPart(valuesTable);
+                int solution = this.secondPart(valuesTable);
+                this.txtResultBox.Text = solution.ToString();
             }
         }
 
@@ -96,6 +71,35 @@ namespace advent_of_code
         {
             return Directory.GetCurrentDirectory() + "\\inputs";
         }
+
+        private string openInputFile() 
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                //open and design task requrements
+                var fileContent = string.Empty;
+                var filePath = string.Empty;
+
+                openFileDialog.InitialDirectory = this.getInputFolder();
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    filePath = openFileDialog.FileName;
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContent = reader.ReadToEnd();
+                        return fileContent;
+                    }
+                }
+            }
+            return null;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -108,7 +112,50 @@ namespace advent_of_code
 
         private void btnSecondTask_Click(object sender, EventArgs e)
         {
+            var fileContent = this.openInputFile();
+            if (fileContent != null)
+            {
+                string[] valuesTable = fileContent.Split('\n');
+                int solution = this.getSubmarinePosition(valuesTable);
+                this.txtResultBox.Text = solution.ToString();
+            }
 
+        }
+
+        private int getSubmarinePosition(string[] valuesTable) {
+
+            int horizontal=0;
+            int depth = 0;
+
+            for (int index = 0; index < valuesTable.Length; index ++) {
+                if (!String.IsNullOrEmpty(valuesTable[index])) {
+                    string[] fullValue = valuesTable[index].Split(' ');
+
+                    string direction = fullValue[0];
+                    int shiftValue = Int32.Parse(fullValue[1]);
+                    calculateNewPositon(ref horizontal, ref depth, direction, shiftValue);
+                }
+            }
+            return horizontal* depth;
+        }
+
+        private void calculateNewPositon(ref int horizontal,ref int depth, string changedPositionDirection, int changedShiftValue) 
+        { 
+            switch (changedPositionDirection)
+            {
+                case "forward":
+                    horizontal += changedShiftValue;
+                    break;
+                case "down":
+                    depth += changedShiftValue;
+                    break;
+                case "up":
+                    depth -= changedShiftValue;
+                    break;
+                default:
+                    Console.WriteLine("The direction is not recognizable");
+                    break;
+            }
         }
     }
 }

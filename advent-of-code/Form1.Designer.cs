@@ -73,6 +73,7 @@
             this.btnSecondTask.Size = new System.Drawing.Size(66, 65);
             this.btnSecondTask.TabIndex = 3;
             this.btnSecondTask.UseVisualStyleBackColor = true;
+            this.btnSecondTask.Click += new System.EventHandler(this.btnSecondTask_Click);
             // 
             // Form1
             // 
