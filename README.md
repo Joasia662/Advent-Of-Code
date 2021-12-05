@@ -1,11 +1,8 @@
 # Advent-Of-Code
 Daily Challange while waiting on Christmas Eve made by https://adventofcode.com/2021
 
-
-
-
-
---------------------------------------
+![Bez tytułu](https://user-images.githubusercontent.com/60195641/144746756-b5b5790b-e931-456c-8547-400b4ad7cd0e.png)
+-----------------------------------------
 <b>Icons list authors:</b> <br>
 
 1. &nbsp;Mistletoe button icon: https://www.flaticon.com/authors/pixel-perfect <br>
