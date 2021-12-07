@@ -76,7 +76,7 @@
             // 
             // txtResultPart2
             // 
-            this.txtResultPart2.Location = new System.Drawing.Point(237, 56);
+            this.txtResultPart2.Location = new System.Drawing.Point(223, 60);
             this.txtResultPart2.Name = "txtResultPart2";
             this.txtResultPart2.Size = new System.Drawing.Size(207, 20);
             this.txtResultPart2.TabIndex = 1;
@@ -84,10 +84,11 @@
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblResult.Location = new System.Drawing.Point(95, 52);
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblResult.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblResult.Location = new System.Drawing.Point(95, 56);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(127, 24);
+            this.lblResult.Size = new System.Drawing.Size(114, 24);
             this.lblResult.TabIndex = 2;
             this.lblResult.Text = "Result Part 2";
             // 
@@ -137,7 +138,7 @@
             // 
             // txtResultPart1
             // 
-            this.txtResultPart1.Location = new System.Drawing.Point(237, 22);
+            this.txtResultPart1.Location = new System.Drawing.Point(223, 22);
             this.txtResultPart1.Name = "txtResultPart1";
             this.txtResultPart1.Size = new System.Drawing.Size(207, 20);
             this.txtResultPart1.TabIndex = 9;
@@ -145,10 +146,11 @@
             // lblResultPart1
             // 
             this.lblResultPart1.AutoSize = true;
-            this.lblResultPart1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblResultPart1.Location = new System.Drawing.Point(95, 18);
+            this.lblResultPart1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblResultPart1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblResultPart1.Location = new System.Drawing.Point(95, 22);
             this.lblResultPart1.Name = "lblResultPart1";
-            this.lblResultPart1.Size = new System.Drawing.Size(127, 24);
+            this.lblResultPart1.Size = new System.Drawing.Size(114, 24);
             this.lblResultPart1.TabIndex = 10;
             this.lblResultPart1.Text = "Result Part 1";
             // 
@@ -319,6 +321,7 @@
             this.button15.Size = new System.Drawing.Size(70, 65);
             this.button15.TabIndex = 24;
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button17
             // 
@@ -379,6 +382,7 @@
             this.button14.Size = new System.Drawing.Size(70, 65);
             this.button14.TabIndex = 33;
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // button16
             // 
@@ -403,6 +407,7 @@
             this.button18.Size = new System.Drawing.Size(70, 65);
             this.button18.TabIndex = 34;
             this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // Form1
             // 
