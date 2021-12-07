@@ -72,7 +72,7 @@
             this.button1.Size = new System.Drawing.Size(70, 65);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.btnFirstTask_Click);
             // 
             // txtResultPart2
             // 
@@ -321,7 +321,6 @@
             this.button15.Size = new System.Drawing.Size(70, 65);
             this.button15.TabIndex = 24;
             this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button17
             // 
@@ -382,7 +381,6 @@
             this.button14.Size = new System.Drawing.Size(70, 65);
             this.button14.TabIndex = 33;
             this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // button16
             // 
@@ -407,7 +405,6 @@
             this.button18.Size = new System.Drawing.Size(70, 65);
             this.button18.TabIndex = 34;
             this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // Form1
             // 
