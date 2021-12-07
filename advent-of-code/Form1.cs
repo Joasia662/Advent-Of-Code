@@ -56,9 +56,9 @@ namespace advent_of_code
                 string[] valuesTable = fileContent.Split('\n');
  
                 int solution1 = DayThree.getPowerConsumption(valuesTable);
-                this.txtResultPart1.Text = solution1.ToString();
-
                 int solution2 = DayThree.getLifeSupportRating(valuesTable);
+
+                this.txtResultPart1.Text = solution1.ToString();
                 this.txtResultPart2.Text = solution2.ToString();
             }
         }
@@ -75,9 +75,10 @@ namespace advent_of_code
                 int matrixCount = emptyLinesCount - 1;
 
                 int[,,] matrices = DayFour.createArrayOfMatrixs(valuesTable, matrixCount);
-                int solution1 = DayFour.countFirstBingoMultiple(matrices, pickedNumbers);
+                int solution1 = DayFour.countFirstBingoMultiple(matrices, pickedNumbers,true);
+                int solution2 = DayFour.countFirstBingoMultiple(matrices, pickedNumbers,false);
                 this.txtResultPart1.Text = solution1.ToString();
-                this.txtResultPart2.Text = " ";
+                this.txtResultPart2.Text = solution2.ToString(); ;
             }
         }
       

@@ -43,11 +43,14 @@ namespace advent_of_code
             return convertedArray;
         }
 
-        public static int countFirstBingoMultiple(int[,,] matrices, int[] pickedNumbers)
+        public static int countFirstBingoMultiple(int[,,] matrices, int[] pickedNumbers, Boolean firstPart)
         {
             int minPickedNumbersTillBingo = 0;
-            int sum = 0;
-            int lastDrawNumber = 0;
+            int maxPickedNumbersTillBingo = 0;
+            int minSum = 0;
+            int maxSum = 0;
+            int lastDrawMinNumber = 0;
+            int lastDrawMaxNumber = 0;
             for (int matrixIndex = 0; matrixIndex < matrices.Length / 25; matrixIndex++)
             {
                 int[,,] checkArray = (int[,,])matrices.Clone();
@@ -64,17 +67,31 @@ namespace advent_of_code
                     }
                     //int[] bingoRow = this.checkBingo(checkArray, matrixIndex, matrices);
                     int bingoSum = checkBingoSum(checkArray, matrixIndex);
-                    if (bingoSum != 0 && (currentPickedNumbersCount < minPickedNumbersTillBingo || minPickedNumbersTillBingo == 0))
+                    if(bingoSum != 0)
                     {
-                        minPickedNumbersTillBingo = currentPickedNumbersCount;
-                        lastDrawNumber = pickedNumber;
-                        sum = bingoSum;
+                        if (currentPickedNumbersCount < minPickedNumbersTillBingo || minPickedNumbersTillBingo == 0) 
+                        {
+                            minPickedNumbersTillBingo = currentPickedNumbersCount;
+                            lastDrawMinNumber = pickedNumber;
+                            minSum = bingoSum;
+                        }
+
+                        if (currentPickedNumbersCount > maxPickedNumbersTillBingo || maxPickedNumbersTillBingo == 0)
+                        {
+                            maxPickedNumbersTillBingo = currentPickedNumbersCount;
+                            lastDrawMaxNumber = pickedNumber;
+                            maxSum = bingoSum;
+                        }
+
+                        break;
                     }
+                  
+                   
 
                 }
             }
-
-            return lastDrawNumber * sum;
+            if (firstPart) return lastDrawMinNumber * minSum;
+            else return lastDrawMaxNumber * maxSum;
         }
 
         private static List<string>  createMatrixRow(string rowValue)
